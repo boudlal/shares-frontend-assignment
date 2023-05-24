@@ -1,0 +1,11 @@
+.table-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.performance-text {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: left;
+}

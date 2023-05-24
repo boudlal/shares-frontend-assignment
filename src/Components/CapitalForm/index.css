@@ -25,13 +25,3 @@
 .actions {
     margin-top: 2rem;
 }
-
-.submit-button {
-    padding-right: 2rem !important;
-    padding-left: 2rem !important;
-    padding-top: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
-    height: auto !important;
-    font-weight: bold;
-    font-size: 1rem !important;
-}

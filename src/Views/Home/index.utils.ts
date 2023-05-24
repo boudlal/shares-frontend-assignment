@@ -9,7 +9,7 @@ export const getSimulation = async (capital: number): Promise<AxiosResponse<any,
 
 export const onQueryError = (error: AxiosError) => {
     const response = error.response?.data as { message: string }
-    notification.error({ message: response.message, duration: 5 })
+    notification.error({ message: response?.message, duration: 5 })
 }
 
 export const onQuerySuccess = (
@@ -20,4 +20,12 @@ export const onQuerySuccess = (
     const response = data.data as { trades: TradeType[]; performance: number }
     setTrades(response.trades)
     setPerformance(response.performance)
+}
+
+export const reset = (
+    setTrades: Dispatch<SetStateAction<TradeType[] | undefined>>,
+    setPerformance: Dispatch<SetStateAction<number>>,
+) => {
+    setTrades(undefined)
+    setPerformance(0)
 }

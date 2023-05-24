@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { AxiosResponse } from 'axios'
-
-import './index.css'
-import CapitalForm from '../../Components/CapitalForm'
 import { useQuery } from '@tanstack/react-query'
-import { getSimulation, onQueryError, onQuerySuccess } from './index.utils'
+import { Button } from 'antd'
 
+import CapitalForm from '../../Components/CapitalForm'
+import { getSimulation, onQueryError, onQuerySuccess, reset } from './index.utils'
 import { TradeType } from '../../types/TradeTypes'
+import TradesTable from '../../Components/TradesTable'
+import './index.css'
 
 function Home(): JSX.Element {
     const [capital, setCapital] = useState<number>(0)
@@ -29,12 +30,25 @@ function Home(): JSX.Element {
     return (
         <div className='home'>
             <header className='header'>
-                <p className='title'>Devenir Plus Riche Que Riche</p>
+                <p className='title'>Devenir plus riche que riche</p>
             </header>
 
             <section className='body'>
                 {trades ? (
-                    <div>{/* Trades Table Here */}</div>
+                    <div>
+                        <TradesTable trades={trades} performance={performance} />
+
+                        <div>
+                            <Button
+                                className='submit-button'
+                                type='primary'
+                                size='large'
+                                onClick={() => reset(setTrades, setPerformance)}
+                            >
+                                Réexécuter la simulation
+                            </Button>
+                        </div>
+                    </div>
                 ) : (
                     <CapitalForm
                         onSubmit={(amount: number) => setCapital(amount)}

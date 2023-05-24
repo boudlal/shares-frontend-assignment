@@ -11,14 +11,14 @@ interface CapitalFormProps {
 function CapitalForm({ onSubmit, isLoading }: CapitalFormProps): JSX.Element {
     return (
         <Form name='capital' onFinish={(values: { capital: number }) => onSubmit(values.capital)}>
-            <p className='subtitle'>How Much Funds Do You Want To Invest?</p>
+            <p className='subtitle'>Combien de fonds souhaitez-vous investir ?</p>
 
             <Form.Item
                 name={'capital'}
                 rules={[
                     {
                         required: true,
-                        message: 'Oops! Please Enter A Valid Capital',
+                        message: 'Oops! Veuillez entrer un numéro valide',
                         pattern: new RegExp(/^[1-9][0-9]*$/),
                     },
                 ]}
@@ -38,7 +38,7 @@ function CapitalForm({ onSubmit, isLoading }: CapitalFormProps): JSX.Element {
                         size='large'
                         htmlType='submit'
                     >
-                        Run Simulation
+                        Exécuter la simulation
                     </Button>
                 </Form.Item>
             </div>
