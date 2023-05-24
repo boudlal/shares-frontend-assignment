@@ -3,11 +3,12 @@ import { Input, Button, Form } from 'antd'
 
 import './index.css'
 
-type CapitalFormProps = {
+interface CapitalFormProps {
     onSubmit: (capital: number) => void
+    isLoading: boolean
 }
 
-function CapitalForm({ onSubmit }: CapitalFormProps): JSX.Element {
+function CapitalForm({ onSubmit, isLoading }: CapitalFormProps): JSX.Element {
     return (
         <Form name='capital' onFinish={(values: { capital: number }) => onSubmit(values.capital)}>
             <p className='subtitle'>How Much Funds Do You Want To Invest?</p>
@@ -30,7 +31,13 @@ function CapitalForm({ onSubmit }: CapitalFormProps): JSX.Element {
 
             <div className='actions'>
                 <Form.Item>
-                    <Button className='submit-button' type='primary' size='large' htmlType='submit'>
+                    <Button
+                        loading={isLoading}
+                        className='submit-button'
+                        type='primary'
+                        size='large'
+                        htmlType='submit'
+                    >
                         Run Simulation
                     </Button>
                 </Form.Item>
